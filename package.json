@@ -2,9 +2,13 @@
   "name": "medminder",
   "version": "1.0.0",
   "private": true,
-  "description": "A local-first medicine reminder. No build step — public/ is the site.",
+  "description": "Local-first medication record and health log you can hand to a pharmacist. No build step — public/ is the site.",
   "scripts": {
     "dev": "serve public --listen 4173",
     "deploy": "wrangler pages deploy public --project-name medminder-app --branch main --commit-dirty=true"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6",
+    "wrangler": "^4.156.2"
   }
 }
