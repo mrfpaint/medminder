@@ -1,0 +1,10 @@
+{
+  "name": "medminder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local-first medicine reminder. No build step — public/ is the site.",
+  "scripts": {
+    "dev": "serve public --listen 4173",
+    "deploy": "wrangler pages deploy public --project-name medminder-app --branch main --commit-dirty=true"
+  }
+}

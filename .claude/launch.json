@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "medminder",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "--listen", "4173", "public"],
+      "port": 4173
+    }
+  ]
+}
