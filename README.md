@@ -60,13 +60,26 @@ works too, but offline support and install-to-home-screen need a real origin.
 
 ## Deploying
 
+**Pushing to `main` deploys automatically** — `.github/workflows/deploy.yml` runs
+`wrangler pages deploy public` against the Pages project `medminder-app`. It needs two
+repository secrets, `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` (an API token with
+*Account → Cloudflare Pages → Edit*). You can also trigger it by hand from the Actions tab.
+
+To deploy from your machine instead:
+
 ```bash
 npm run deploy
 ```
 
-Pushes `public/` to the Cloudflare Pages project `medminder-app`. Needs `wrangler login`
-once. When you change `app.js`, `styles.css` or `index.html`, bump `CACHE` in
-`public/sw.js` so returning visitors don't get the old cached copy.
+Needs `wrangler login` once.
+
+This uses GitHub Actions rather than Cloudflare's own Git integration on purpose.
+`medminder-app` is a Direct Upload project and those can't be converted, so connecting it
+to Git would mean a new project at a new URL — and because `localStorage` is keyed to the
+origin, every medicine and reading already recorded would be orphaned.
+
+Whenever you change `app.js`, `styles.css` or `index.html`, bump `CACHE` in `public/sw.js`
+so returning visitors don't get the old cached copy.
 
 ## Your data
 
